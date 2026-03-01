@@ -30,11 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Data persists across page refreshes and browser restarts (navigator.storage.persist() called)
   4. Week calculation correctly maps any date to its Sunday-to-Saturday week number, with founder's timeline starting at Week 943
   5. All records use UUIDs, timestamps, and deviceId fields (sync-ready data model)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md — Project scaffolding + Dexie database schema with 4 stores and persistence protection
+- [ ] 01-02-PLAN.md — Week calculation utilities (TDD) + app shell page proving data layer works
 
 ### Phase 2: Grid and Card Views
 **Goal**: Users can browse their entire life as a visual grid and view any week as a flippable card
@@ -102,7 +102,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Foundation | 0/? | Not started | - |
+| 1. Data Foundation | 0/2 | Planned | - |
 | 2. Grid and Card Views | 0/? | Not started | - |
 | 3. Capture | 0/? | Not started | - |
 | 4. AI Synthesis | 0/? | Not started | - |
