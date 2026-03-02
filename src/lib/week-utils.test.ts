@@ -24,38 +24,43 @@ describe('week-utils', () => {
 
   describe('getWeekNumber', () => {
     it('returns 943 for epoch date 2025-07-20 (Sunday)', () => {
-      expect(getWeekNumber(new Date('2025-07-20'))).toBe(943);
+      expect(getWeekNumber(new Date(2025, 6, 20))).toBe(943);
     });
 
     it('returns 943 for 2025-07-26 (Saturday, same week)', () => {
-      expect(getWeekNumber(new Date('2025-07-26'))).toBe(943);
+      expect(getWeekNumber(new Date(2025, 6, 26))).toBe(943);
     });
 
     it('returns 944 for 2025-07-27 (next Sunday, next week)', () => {
-      expect(getWeekNumber(new Date('2025-07-27'))).toBe(944);
+      expect(getWeekNumber(new Date(2025, 6, 27))).toBe(944);
     });
 
     it('returns 942 for 2025-07-13 (one week before epoch)', () => {
-      expect(getWeekNumber(new Date('2025-07-13'))).toBe(942);
+      expect(getWeekNumber(new Date(2025, 6, 13))).toBe(942);
     });
 
-    it('returns 1 for 2007-08-19 (week 1, 942 weeks before epoch)', () => {
-      expect(getWeekNumber(new Date('2007-08-19'))).toBe(1);
+    it('returns 8 for 2007-08-19 (Sun Aug 19, 2007)', () => {
+      // 2007-08-19 is 6545 days before epoch, which is 935 weeks -> week 943 - 935 = 8
+      expect(getWeekNumber(new Date(2007, 7, 19))).toBe(8);
+    });
+
+    it('returns 1 for 2007-07-01 (week 1, 942 weeks before epoch)', () => {
+      expect(getWeekNumber(new Date(2007, 6, 1))).toBe(1);
     });
 
     it('handles mid-week dates correctly', () => {
       // Wednesday 2025-07-23 should still be week 943
-      expect(getWeekNumber(new Date('2025-07-23'))).toBe(943);
+      expect(getWeekNumber(new Date(2025, 6, 23))).toBe(943);
     });
 
     it('handles dates far in the future', () => {
       // 10 weeks after epoch = week 953
-      expect(getWeekNumber(new Date('2025-09-28'))).toBe(953);
+      expect(getWeekNumber(new Date(2025, 8, 28))).toBe(953);
     });
 
     it('handles dates far in the past', () => {
-      // Week 1 starts on 2007-08-19, so week 0 would be 2007-08-12
-      expect(getWeekNumber(new Date('2007-08-12'))).toBe(0);
+      // Week 1 starts on 2007-07-01, so week 0 starts on 2007-06-24
+      expect(getWeekNumber(new Date(2007, 5, 24))).toBe(0);
     });
   });
 
@@ -74,9 +79,9 @@ describe('week-utils', () => {
 
     it('returns correct boundaries for week 1', () => {
       const boundaries = getWeekBoundaries(1);
-      // 942 weeks before epoch: 2025-07-20 - (942 * 7 days)
-      expect(boundaries.start).toBe('2007-08-19');
-      expect(boundaries.end).toBe('2007-08-25');
+      // 942 weeks before epoch: 2025-07-20 - (942 * 7 days) = 2007-07-01
+      expect(boundaries.start).toBe('2007-07-01');
+      expect(boundaries.end).toBe('2007-07-07');
     });
 
     it('start is always a Sunday', () => {
@@ -137,7 +142,7 @@ describe('week-utils', () => {
 
   describe('week number increment/decrement', () => {
     it('week numbers increment by 1 for every 7 days forward', () => {
-      const base = new Date('2025-07-20'); // Week 943
+      const base = new Date(2025, 6, 20); // Week 943 (local midnight)
       for (let i = 0; i < 10; i++) {
         const date = new Date(base);
         date.setDate(date.getDate() + i * 7);
@@ -146,7 +151,7 @@ describe('week-utils', () => {
     });
 
     it('week numbers decrement by 1 for every 7 days backward', () => {
-      const base = new Date('2025-07-20'); // Week 943
+      const base = new Date(2025, 6, 20); // Week 943 (local midnight)
       for (let i = 0; i < 10; i++) {
         const date = new Date(base);
         date.setDate(date.getDate() - i * 7);
