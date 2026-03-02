@@ -44,11 +44,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Data & Storage
 
-- [ ] **DATA-01**: All data stored locally in IndexedDB via Dexie.js (no account required)
-- [ ] **DATA-02**: Data model uses UUIDs, timestamps, and deviceId (sync-ready for future)
-- [ ] **DATA-03**: Safari IndexedDB eviction protection via navigator.storage.persist()
+- [x] **DATA-01**: All data stored locally in IndexedDB via Dexie.js (no account required)
+- [x] **DATA-02**: Data model uses UUIDs, timestamps, and deviceId (sync-ready for future)
+- [x] **DATA-03**: Safari IndexedDB eviction protection via navigator.storage.persist()
 - [ ] **DATA-04**: User can export all data as JSON for backup
-- [ ] **DATA-05**: Entries and syntheses stored in separate IndexedDB stores
+- [x] **DATA-05**: Entries and syntheses stored in separate IndexedDB stores
 
 ### Onboarding & Polish
 
@@ -118,11 +118,11 @@ Deferred to future release. Tracked but not in current roadmap.
 | AI-04 | Phase 4 | Pending |
 | AI-05 | Phase 4 | Pending |
 | AI-06 | Phase 4 | Pending |
-| DATA-01 | Phase 1 | Pending |
-| DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
+| DATA-02 | Phase 1 | Complete |
+| DATA-03 | Phase 1 | Complete |
 | DATA-04 | Phase 5 | Pending |
-| DATA-05 | Phase 1 | Pending |
+| DATA-05 | Phase 1 | Complete |
 | UX-01 | Phase 5 | Pending |
 | UX-02 | Phase 5 | Pending |
 | UX-03 | Phase 1 | Pending |
