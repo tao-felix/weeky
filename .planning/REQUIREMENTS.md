@@ -54,8 +54,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **UX-01**: First-run asks for start date and reveals the life grid with emotional weight
 - [ ] **UX-02**: Dark and light mode support
-- [ ] **UX-03**: Week runs Sunday to Saturday
-- [ ] **UX-04**: Founder's timeline starts at Week 943 (2025-07-20)
+- [x] **UX-03**: Week runs Sunday to Saturday
+- [x] **UX-04**: Founder's timeline starts at Week 943 (2025-07-20)
 
 ## v2 Requirements
 
@@ -125,8 +125,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | DATA-05 | Phase 1 | Complete |
 | UX-01 | Phase 5 | Pending |
 | UX-02 | Phase 5 | Pending |
-| UX-03 | Phase 1 | Pending |
-| UX-04 | Phase 1 | Pending |
+| UX-03 | Phase 1 | Complete |
+| UX-04 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 32 total
