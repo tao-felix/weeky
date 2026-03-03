@@ -12,18 +12,18 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **GRID-01**: User can view a 4000-week grid showing all weeks of their life
 - [x] **GRID-02**: Each week cell is color-coded by state (empty, has-captures, AI-synthesized, current week)
 - [x] **GRID-03**: Current week is visually highlighted ("you are here" marker)
-- [ ] **GRID-04**: User can click any week cell to open the week card detail view
+- [x] **GRID-04**: User can click any week cell to open the week card detail view
 - [x] **GRID-05**: Grid is responsive and functional on mobile browsers
 - [x] **GRID-06**: Grid renders performantly with virtualization (no scroll jank)
 
 ### Card Views
 
 - [ ] **CARD-01**: Week card front displays week number and AI-generated headline (e.g., "Week 943: Naval & Rebranding")
-- [ ] **CARD-02**: Week card back displays raw captures with timestamps
+- [x] **CARD-02**: Week card back displays raw captures with timestamps
 - [ ] **CARD-03**: Week card back displays AI-synthesized highlights
 - [ ] **CARD-04**: User can toggle between Raw and AI views on card back
-- [ ] **CARD-05**: Card has flip animation between front and back (museum feel)
-- [ ] **CARD-06**: Card front gracefully degrades when no AI headline exists (shows "Week 943" only)
+- [x] **CARD-05**: Card has flip animation between front and back (museum feel)
+- [x] **CARD-06**: Card front gracefully degrades when no AI headline exists (shows "Week 943" only)
 
 ### Capture & Input
 
@@ -98,15 +98,15 @@ Deferred to future release. Tracked but not in current roadmap.
 | GRID-01 | Phase 2 | Complete |
 | GRID-02 | Phase 2 | Complete |
 | GRID-03 | Phase 2 | Complete |
-| GRID-04 | Phase 2 | Pending |
+| GRID-04 | Phase 2 | Complete |
 | GRID-05 | Phase 2 | Complete |
 | GRID-06 | Phase 2 | Complete |
 | CARD-01 | Phase 4 | Pending |
-| CARD-02 | Phase 2 | Pending |
+| CARD-02 | Phase 2 | Complete |
 | CARD-03 | Phase 4 | Pending |
 | CARD-04 | Phase 4 | Pending |
-| CARD-05 | Phase 2 | Pending |
-| CARD-06 | Phase 2 | Pending |
+| CARD-05 | Phase 2 | Complete |
+| CARD-06 | Phase 2 | Complete |
 | CAPT-01 | Phase 3 | Pending |
 | CAPT-02 | Phase 3 | Pending |
 | CAPT-03 | Phase 3 | Pending |
