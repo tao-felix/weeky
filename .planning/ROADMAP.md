@@ -103,7 +103,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Foundation | 2/2 | Complete | 2026-03-02 |
-| 2. Grid and Card Views | 0/2 | Planned | - |
+| 2. Grid and Card Views | 1/2 | In Progress | - |
 | 3. Capture | 0/? | Not started | - |
 | 4. AI Synthesis | 0/? | Not started | - |
 | 5. Onboarding and Polish | 0/? | Not started | - |

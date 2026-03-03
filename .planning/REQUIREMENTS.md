@@ -9,12 +9,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Grid & Navigation
 
-- [ ] **GRID-01**: User can view a 4000-week grid showing all weeks of their life
-- [ ] **GRID-02**: Each week cell is color-coded by state (empty, has-captures, AI-synthesized, current week)
-- [ ] **GRID-03**: Current week is visually highlighted ("you are here" marker)
+- [x] **GRID-01**: User can view a 4000-week grid showing all weeks of their life
+- [x] **GRID-02**: Each week cell is color-coded by state (empty, has-captures, AI-synthesized, current week)
+- [x] **GRID-03**: Current week is visually highlighted ("you are here" marker)
 - [ ] **GRID-04**: User can click any week cell to open the week card detail view
-- [ ] **GRID-05**: Grid is responsive and functional on mobile browsers
-- [ ] **GRID-06**: Grid renders performantly with virtualization (no scroll jank)
+- [x] **GRID-05**: Grid is responsive and functional on mobile browsers
+- [x] **GRID-06**: Grid renders performantly with virtualization (no scroll jank)
 
 ### Card Views
 
@@ -95,12 +95,12 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| GRID-01 | Phase 2 | Pending |
-| GRID-02 | Phase 2 | Pending |
-| GRID-03 | Phase 2 | Pending |
+| GRID-01 | Phase 2 | Complete |
+| GRID-02 | Phase 2 | Complete |
+| GRID-03 | Phase 2 | Complete |
 | GRID-04 | Phase 2 | Pending |
-| GRID-05 | Phase 2 | Pending |
-| GRID-06 | Phase 2 | Pending |
+| GRID-05 | Phase 2 | Complete |
+| GRID-06 | Phase 2 | Complete |
 | CARD-01 | Phase 4 | Pending |
 | CARD-02 | Phase 2 | Pending |
 | CARD-03 | Phase 4 | Pending |
