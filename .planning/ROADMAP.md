@@ -61,10 +61,11 @@ Plans:
   2. User can write a longer reflection in a dedicated space (distinct from quick capture)
   3. Captures autosave to IndexedDB -- closing the browser and reopening preserves all entries
   4. Grid cells update in real-time when captures are added (empty cell becomes has-captures state)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md — Chat-style quick capture with auto-timestamps and IndexedDB persistence
+- [ ] 03-02-PLAN.md — Reflection editor with autosave draft, capture mode toggle, and grid real-time updates
 
 ### Phase 4: AI Synthesis
 **Goal**: Users can transform their raw week captures into a polished card with an AI-generated headline and curated highlights
