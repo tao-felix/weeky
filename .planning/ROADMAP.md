@@ -46,11 +46,11 @@ Plans:
   3. User can click any week cell to open a card detail view with a flip animation between front and back
   4. Card front shows the week number (gracefully degrades when no AI headline exists); card back shows raw captures with timestamps
   5. Grid layout is responsive and functional on mobile browsers
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md — Virtualized 4000-week grid with TanStack Virtual, color-coded cells, responsive layout, and current week highlight
+- [ ] 02-02-PLAN.md — Week card detail view with 3D flip animation (Motion), front/back faces, and overlay wiring
 
 ### Phase 3: Capture
 **Goal**: Users can record thoughts during their current week via quick chat-style input and longer reflections
@@ -102,8 +102,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Foundation | 0/2 | Planned | - |
-| 2. Grid and Card Views | 0/? | Not started | - |
+| 1. Data Foundation | 2/2 | Complete | 2026-03-02 |
+| 2. Grid and Card Views | 0/2 | Planned | - |
 | 3. Capture | 0/? | Not started | - |
 | 4. AI Synthesis | 0/? | Not started | - |
 | 5. Onboarding and Polish | 0/? | Not started | - |
