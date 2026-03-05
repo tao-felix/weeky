@@ -29,9 +29,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **CAPT-01**: User can quickly capture thoughts via chat-style input during current week
 - [x] **CAPT-02**: Each capture is timestamped automatically
-- [ ] **CAPT-03**: User can write longer reflections in a dedicated space
+- [x] **CAPT-03**: User can write longer reflections in a dedicated space
 - [x] **CAPT-04**: Captures autosave to prevent data loss
-- [ ] **CAPT-05**: Grid cells update in real-time when captures are added
+- [x] **CAPT-05**: Grid cells update in real-time when captures are added
 
 ### AI Synthesis
 
@@ -109,9 +109,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | CARD-06 | Phase 2 | Complete |
 | CAPT-01 | Phase 3 | Complete |
 | CAPT-02 | Phase 3 | Complete |
-| CAPT-03 | Phase 3 | Pending |
+| CAPT-03 | Phase 3 | Complete |
 | CAPT-04 | Phase 3 | Complete |
-| CAPT-05 | Phase 3 | Pending |
+| CAPT-05 | Phase 3 | Complete |
 | AI-01 | Phase 4 | Pending |
 | AI-02 | Phase 4 | Pending |
 | AI-03 | Phase 4 | Pending |
