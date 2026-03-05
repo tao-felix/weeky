@@ -35,12 +35,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### AI Synthesis
 
-- [ ] **AI-01**: User can trigger AI synthesis for any week with captures
-- [ ] **AI-02**: AI generates a card-native headline (short, evocative title for the week)
-- [ ] **AI-03**: AI generates curated highlights (key themes/moments from captures)
-- [ ] **AI-04**: AI synthesis streams back in real-time (visible progress)
-- [ ] **AI-05**: AI API key is never exposed to the client (server-side proxy)
-- [ ] **AI-06**: AI costs are controlled (Haiku model, prompt caching, token limits)
+- [x] **AI-01**: User can trigger AI synthesis for any week with captures
+- [x] **AI-02**: AI generates a card-native headline (short, evocative title for the week)
+- [x] **AI-03**: AI generates curated highlights (key themes/moments from captures)
+- [x] **AI-04**: AI synthesis streams back in real-time (visible progress)
+- [x] **AI-05**: AI API key is never exposed to the client (server-side proxy)
+- [x] **AI-06**: AI costs are controlled (Haiku model, prompt caching, token limits)
 
 ### Data & Storage
 
@@ -112,12 +112,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | CAPT-03 | Phase 3 | Complete |
 | CAPT-04 | Phase 3 | Complete |
 | CAPT-05 | Phase 3 | Complete |
-| AI-01 | Phase 4 | Pending |
-| AI-02 | Phase 4 | Pending |
-| AI-03 | Phase 4 | Pending |
-| AI-04 | Phase 4 | Pending |
-| AI-05 | Phase 4 | Pending |
-| AI-06 | Phase 4 | Pending |
+| AI-01 | Phase 4 | Complete |
+| AI-02 | Phase 4 | Complete |
+| AI-03 | Phase 4 | Complete |
+| AI-04 | Phase 4 | Complete |
+| AI-05 | Phase 4 | Complete |
+| AI-06 | Phase 4 | Complete |
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 1 | Complete |
 | DATA-03 | Phase 1 | Complete |
