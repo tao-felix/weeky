@@ -1,18 +1,24 @@
 'use client';
 
+import { useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '@/lib/db';
 import { getCurrentWeek } from '@/lib/week-utils';
 import { format } from 'date-fns';
 import { MessageCircle, PenLine } from 'lucide-react';
 import { QuickCapture } from '@/components/capture/QuickCapture';
+import { ReflectionEditor } from '@/components/capture/ReflectionEditor';
 
 interface CardBackProps {
   weekNumber: number;
 }
 
+type CaptureMode = 'quick' | 'reflect';
+
 export function CardBack({ weekNumber }: CardBackProps) {
   const isCurrentWeek = weekNumber === getCurrentWeek();
+  const [captureMode, setCaptureMode] = useState<CaptureMode>('quick');
+
   const entries = useLiveQuery(
     () => db.entries.where('weekId').equals(`week-${weekNumber}`).sortBy('createdAt'),
     [weekNumber]
@@ -59,7 +65,7 @@ export function CardBack({ weekNumber }: CardBackProps) {
                   {format(new Date(entry.createdAt), 'EEE, MMM d \u00b7 h:mm a')}
                 </time>
               </div>
-              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed whitespace-pre-wrap">
                 {entry.content}
               </p>
             </div>
@@ -67,10 +73,43 @@ export function CardBack({ weekNumber }: CardBackProps) {
         )}
       </div>
 
-      {/* Quick capture input -- current week only */}
+      {/* Capture area -- current week only */}
       {isCurrentWeek && (
-        <div className="mt-4">
-          <QuickCapture weekNumber={weekNumber} />
+        <div className="mt-4 space-y-2">
+          {/* Mode toggle tabs */}
+          <div className="flex gap-1 rounded-md bg-stone-100 p-0.5 dark:bg-stone-800">
+            <button
+              type="button"
+              onClick={() => setCaptureMode('quick')}
+              className={`flex flex-1 items-center justify-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium transition-colors ${
+                captureMode === 'quick'
+                  ? 'bg-white text-stone-700 shadow-sm dark:bg-stone-700 dark:text-stone-200'
+                  : 'text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300'
+              }`}
+            >
+              <MessageCircle className="h-3 w-3" />
+              Quick
+            </button>
+            <button
+              type="button"
+              onClick={() => setCaptureMode('reflect')}
+              className={`flex flex-1 items-center justify-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium transition-colors ${
+                captureMode === 'reflect'
+                  ? 'bg-white text-stone-700 shadow-sm dark:bg-stone-700 dark:text-stone-200'
+                  : 'text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300'
+              }`}
+            >
+              <PenLine className="h-3 w-3" />
+              Reflect
+            </button>
+          </div>
+
+          {/* Active capture component */}
+          {captureMode === 'quick' ? (
+            <QuickCapture weekNumber={weekNumber} />
+          ) : (
+            <ReflectionEditor weekNumber={weekNumber} />
+          )}
         </div>
       )}
 
