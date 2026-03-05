@@ -2,14 +2,17 @@
 
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '@/lib/db';
+import { getCurrentWeek } from '@/lib/week-utils';
 import { format } from 'date-fns';
 import { MessageCircle, PenLine } from 'lucide-react';
+import { QuickCapture } from '@/components/capture/QuickCapture';
 
 interface CardBackProps {
   weekNumber: number;
 }
 
 export function CardBack({ weekNumber }: CardBackProps) {
+  const isCurrentWeek = weekNumber === getCurrentWeek();
   const entries = useLiveQuery(
     () => db.entries.where('weekId').equals(`week-${weekNumber}`).sortBy('createdAt'),
     [weekNumber]
@@ -63,6 +66,13 @@ export function CardBack({ weekNumber }: CardBackProps) {
           ))
         )}
       </div>
+
+      {/* Quick capture input -- current week only */}
+      {isCurrentWeek && (
+        <div className="mt-4">
+          <QuickCapture weekNumber={weekNumber} />
+        </div>
+      )}
 
       {/* Flip hint */}
       <p className="mt-4 text-xs text-stone-400 dark:text-stone-500 text-center">
