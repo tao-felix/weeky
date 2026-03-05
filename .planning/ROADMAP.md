@@ -77,11 +77,11 @@ Plans:
   3. AI generates curated highlights (key themes and moments) displayed on the card back
   4. User can toggle between Raw captures view and AI-synthesized view on the card back
   5. API key is never exposed to the browser (all Claude calls go through a server-side proxy with cost controls)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md — AI Route Handler with streaming Claude proxy + synthesis utilities (runSynthesis, saveSynthesis)
+- [ ] 04-02-PLAN.md — Card UI integration: SynthesizeButton, SynthesisView, Raw/Synthesis toggle on CardBack
 
 ### Phase 5: Onboarding and Polish
 **Goal**: New users have an emotionally resonant first experience, and all users can export their data and choose their visual theme
@@ -106,5 +106,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Data Foundation | 2/2 | Complete | 2026-03-02 |
 | 2. Grid and Card Views | 2/2 | Complete | 2026-03-03 |
 | 3. Capture | 2/2 | Complete | 2026-03-05 |
-| 4. AI Synthesis | 0/? | Not started | - |
+| 4. AI Synthesis | 0/2 | Not started | - |
 | 5. Onboarding and Polish | 0/? | Not started | - |
