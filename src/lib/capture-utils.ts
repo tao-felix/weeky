@@ -20,6 +20,35 @@ async function getDeviceId(): Promise<string> {
 }
 
 /**
+ * Internal: create an entry of the given type and persist to IndexedDB.
+ */
+async function createEntry({
+  content,
+  weekNumber,
+  type,
+}: {
+  content: string;
+  weekNumber: number;
+  type: Entry['type'];
+}): Promise<Entry> {
+  const now = new Date().toISOString();
+  const deviceId = await getDeviceId();
+
+  const entry: Entry = {
+    id: crypto.randomUUID(),
+    weekId: `week-${weekNumber}`,
+    content,
+    type,
+    createdAt: now,
+    updatedAt: now,
+    deviceId,
+  };
+
+  await db.entries.add(entry);
+  return entry;
+}
+
+/**
  * Create a quick capture entry and persist it to IndexedDB.
  * Returns the created entry.
  */
@@ -30,19 +59,19 @@ export async function createQuickCapture({
   content: string;
   weekNumber: number;
 }): Promise<Entry> {
-  const now = new Date().toISOString();
-  const deviceId = await getDeviceId();
+  return createEntry({ content, weekNumber, type: 'quick' });
+}
 
-  const entry: Entry = {
-    id: crypto.randomUUID(),
-    weekId: `week-${weekNumber}`,
-    content,
-    type: 'quick',
-    createdAt: now,
-    updatedAt: now,
-    deviceId,
-  };
-
-  await db.entries.add(entry);
-  return entry;
+/**
+ * Create a reflection entry and persist it to IndexedDB.
+ * Returns the created entry.
+ */
+export async function createReflection({
+  content,
+  weekNumber,
+}: {
+  content: string;
+  weekNumber: number;
+}): Promise<Entry> {
+  return createEntry({ content, weekNumber, type: 'reflection' });
 }
