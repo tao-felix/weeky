@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-05T10:46:04Z"
+last_updated: "2026-03-05T10:52:08.191Z"
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 8
-  completed_plans: 7
+  completed_plans: 8
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-02)
 
 **Core value:** Every week of your life deserves a card -- quick capture in the moment, AI-synthesized reflection when you're ready.
-**Current focus:** Phase 4: AI Synthesis
+**Current focus:** Phase 4 complete, ready for Phase 5
 
 ## Current Position
 
-Phase: 4 of 5 (AI Synthesis) -- IN PROGRESS
-Plan: 1 of 2 in current phase (04-01 complete)
-Status: Plan 04-01 complete, ready for 04-02
-Last activity: 2026-03-05 -- Completed 04-01-PLAN.md
+Phase: 4 of 5 (AI Synthesis) -- COMPLETE
+Plan: 2 of 2 in current phase (all complete)
+Status: Phase 04 complete, ready for Phase 05
+Last activity: 2026-03-05 -- Completed 04-02-PLAN.md
 
-Progress: [#######...] 70%
+Progress: [########..] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 3min
-- Total execution time: 0.3 hours
+- Total plans completed: 8
+- Average duration: 2.8min
+- Total execution time: 0.4 hours
 
 **By Phase:**
 
@@ -43,10 +43,10 @@ Progress: [#######...] 70%
 | 01-data-foundation | 2 | 9min | 4.5min |
 | 02-grid-and-card-views | 2 | 4min | 2min |
 | 03-capture | 2 | 4min | 2min |
-| 04-ai-synthesis | 1 | 2min | 2min |
+| 04-ai-synthesis | 2 | 4min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (2min), 03-01 (2min), 03-02 (2min), 04-01 (2min)
+- Last 5 plans: 03-01 (2min), 03-02 (2min), 04-01 (2min), 04-02 (2min)
 - Trend: Consistent 2min/plan
 
 *Updated after each plan completion*
@@ -83,6 +83,9 @@ Recent decisions affecting current work:
 - [04-01]: streamText + toTextStreamResponse for plain text streaming (not Output.object)
 - [04-01]: Manual fetch + ReadableStream reader on client (not useCompletion hook)
 - [04-01]: Duplicated getDeviceId helper rather than refactoring capture-utils exports
+- [04-02]: Default viewMode is 'captures' -- user explicitly toggles to synthesis view
+- [04-02]: Auto-switch to synthesis view after successful synthesis via onComplete callback
+- [04-02]: SynthesizeButton uses rounded-full pill shape to differentiate from tab toggles
 
 ### Pending Todos
 
@@ -95,5 +98,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-05
-Stopped at: Completed 04-01-PLAN.md
-Resume file: .planning/phases/04-ai-synthesis/04-01-SUMMARY.md
+Stopped at: Completed 04-02-PLAN.md (Phase 04 complete)
+Resume file: .planning/phases/04-ai-synthesis/04-02-SUMMARY.md

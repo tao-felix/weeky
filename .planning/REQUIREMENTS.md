@@ -18,10 +18,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Card Views
 
-- [ ] **CARD-01**: Week card front displays week number and AI-generated headline (e.g., "Week 943: Naval & Rebranding")
+- [x] **CARD-01**: Week card front displays week number and AI-generated headline (e.g., "Week 943: Naval & Rebranding")
 - [x] **CARD-02**: Week card back displays raw captures with timestamps
-- [ ] **CARD-03**: Week card back displays AI-synthesized highlights
-- [ ] **CARD-04**: User can toggle between Raw and AI views on card back
+- [x] **CARD-03**: Week card back displays AI-synthesized highlights
+- [x] **CARD-04**: User can toggle between Raw and AI views on card back
 - [x] **CARD-05**: Card has flip animation between front and back (museum feel)
 - [x] **CARD-06**: Card front gracefully degrades when no AI headline exists (shows "Week 943" only)
 
@@ -101,10 +101,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | GRID-04 | Phase 2 | Complete |
 | GRID-05 | Phase 2 | Complete |
 | GRID-06 | Phase 2 | Complete |
-| CARD-01 | Phase 4 | Pending |
+| CARD-01 | Phase 4 | Complete |
 | CARD-02 | Phase 2 | Complete |
-| CARD-03 | Phase 4 | Pending |
-| CARD-04 | Phase 4 | Pending |
+| CARD-03 | Phase 4 | Complete |
+| CARD-04 | Phase 4 | Complete |
 | CARD-05 | Phase 2 | Complete |
 | CARD-06 | Phase 2 | Complete |
 | CAPT-01 | Phase 3 | Complete |

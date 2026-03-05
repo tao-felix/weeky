@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Data Foundation** - Local-first storage layer, week math, and project scaffolding
 - [x] **Phase 2: Grid and Card Views** - Virtualized 4000-week grid and week card with front/back flip
 - [x] **Phase 3: Capture** - Chat-style quick input and longer reflections with persistence
-- [ ] **Phase 4: AI Synthesis** - Claude-powered week headlines and curated highlights
+- [x] **Phase 4: AI Synthesis** - Claude-powered week headlines and curated highlights
 - [ ] **Phase 5: Onboarding and Polish** - First-run experience, data export, and theming
 
 ## Phase Details
@@ -106,5 +106,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Data Foundation | 2/2 | Complete | 2026-03-02 |
 | 2. Grid and Card Views | 2/2 | Complete | 2026-03-03 |
 | 3. Capture | 2/2 | Complete | 2026-03-05 |
-| 4. AI Synthesis | 0/2 | Not started | - |
+| 4. AI Synthesis | 2/2 | Complete | 2026-03-05 |
 | 5. Onboarding and Polish | 0/? | Not started | - |
