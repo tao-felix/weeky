@@ -34,3 +34,10 @@ export function getWeekBoundaries(weekNumber: number): { start: string; end: str
 export function getCurrentWeek(): number {
   return getWeekNumber(new Date());
 }
+
+/**
+ * Calculate how many weeks a person has lived since their birth date.
+ */
+export function getWeeksLived(birthDate: Date): number {
+  return Math.floor(differenceInCalendarDays(new Date(), birthDate) / 7);
+}
