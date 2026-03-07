@@ -35,8 +35,30 @@ function useDeviceId() {
   }, []);
 }
 
+function useThemeInit() {
+  useEffect(() => {
+    async function initTheme() {
+      const stored = await db.settings.get("theme");
+      if (stored && (stored.value === "dark" || stored.value === "light")) {
+        if (stored.value === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } else {
+        // No stored preference -- use system preference
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document.documentElement.classList.add("dark");
+        }
+      }
+    }
+    initTheme();
+  }, []);
+}
+
 export function Providers({ children }: { children: React.ReactNode }) {
   useStoragePersistence();
   useDeviceId();
+  useThemeInit();
   return <>{children}</>;
 }

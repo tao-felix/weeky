@@ -16,6 +16,7 @@ import {
 } from '@/lib/grid-utils';
 import { useUIStore } from '@/stores/ui-store';
 import { WeekCell } from './WeekCell';
+import { ThemeToggle } from '../ThemeToggle';
 import { format } from 'date-fns';
 
 // Derive the year of Week 1 for year labels
@@ -94,7 +95,10 @@ export function WeekGrid() {
   return (
     <div className="flex flex-col h-full bg-stone-50 dark:bg-stone-950">
       {/* Header */}
-      <div className="flex-none px-4 pt-6 pb-2 sm:px-6 text-center">
+      <div className="flex-none px-4 pt-6 pb-2 sm:px-6 text-center relative">
+        <div className="absolute top-4 right-4 sm:right-6 flex items-center gap-1">
+          <ThemeToggle />
+        </div>
         <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-stone-700 dark:text-stone-300">
           Your 4000 Weeks
         </h1>
