@@ -108,4 +108,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Grid and Card Views | 2/2 | Complete | 2026-03-03 |
 | 3. Capture | 2/2 | Complete | 2026-03-05 |
 | 4. AI Synthesis | 2/2 | Complete | 2026-03-05 |
-| 5. Onboarding and Polish | 0/2 | In Progress | - |
+| 5. Onboarding and Polish | 1/2 | In Progress | - |

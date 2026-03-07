@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-07T14:41:00Z"
+last_updated: "2026-03-07T15:00:00Z"
 progress:
   total_phases: 5
   completed_phases: 4
@@ -18,14 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-02)
 
 **Core value:** Every week of your life deserves a card -- quick capture in the moment, AI-synthesized reflection when you're ready.
-**Current focus:** Phase 5 in progress -- dark mode and export done, onboarding next
+**Current focus:** Phase 5 complete -- all plans done (theme toggle, export, onboarding)
 
 ## Current Position
 
-Phase: 5 of 5 (Onboarding & Polish)
-Plan: 1 of 2 in current phase (05-01 complete)
-Status: 05-01 complete, ready for 05-02
-Last activity: 2026-03-07 -- Completed 05-01-PLAN.md
+Phase: 5 of 5 (Onboarding & Polish) -- COMPLETE
+Plan: 2 of 2 in current phase (both complete)
+Status: All plans complete, ready for verification
+Last activity: 2026-03-07 -- Completed 05-01 and 05-02
 
 Progress: [#########.] 90%
 
@@ -47,8 +47,8 @@ Progress: [#########.] 90%
 | 05-onboarding-and-polish | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 03-02 (2min), 04-01 (2min), 04-02 (2min), 05-01 (3min)
-- Trend: Consistent ~2-3min/plan
+- Last 5 plans: 04-01 (2min), 04-02 (2min), 05-01 (3min), 05-02 (3min)
+- Trend: Consistent 2-3min/plan
 
 *Updated after each plan completion*
 
@@ -90,6 +90,10 @@ Recent decisions affecting current work:
 - [05-01]: Theme applied via dark class on documentElement, matching Tailwind v4 custom variant
 - [05-01]: System preference as default when no stored theme in Dexie
 - [05-01]: Export uses client-side Blob + programmatic anchor click for download
+- [05-02]: Native HTML date input for birth date (no date picker library needed)
+- [05-02]: Null sentinel pattern with useLiveQuery to distinguish loading from not-found
+- [05-02]: 3-second revelation pause for emotional weight before grid transition
+- [05-02]: Birth date used only for onboarding message, does not change grid epoch
 
 ### Pending Todos
 
@@ -102,5 +106,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 05-01-PLAN.md
-Resume file: .planning/phases/05-onboarding-and-polish/05-01-SUMMARY.md
+Stopped at: Both 05-01 and 05-02 complete
+Resume file: .planning/phases/05-onboarding-and-polish/
