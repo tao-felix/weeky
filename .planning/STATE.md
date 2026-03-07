@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-05T10:57:49.217Z"
+status: in-progress
+last_updated: "2026-03-07T14:41:00Z"
 progress:
-  total_phases: 4
+  total_phases: 5
   completed_phases: 4
-  total_plans: 8
-  completed_plans: 8
+  total_plans: 10
+  completed_plans: 9
 ---
 
 # Project State
@@ -18,21 +18,21 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-02)
 
 **Core value:** Every week of your life deserves a card -- quick capture in the moment, AI-synthesized reflection when you're ready.
-**Current focus:** Phase 4 complete, ready for Phase 5
+**Current focus:** Phase 5 in progress -- dark mode and export done, onboarding next
 
 ## Current Position
 
-Phase: 4 of 5 (AI Synthesis) -- COMPLETE
-Plan: 2 of 2 in current phase (all complete)
-Status: Phase 04 complete, ready for Phase 05
-Last activity: 2026-03-05 -- Completed 04-02-PLAN.md
+Phase: 5 of 5 (Onboarding & Polish)
+Plan: 1 of 2 in current phase (05-01 complete)
+Status: 05-01 complete, ready for 05-02
+Last activity: 2026-03-07 -- Completed 05-01-PLAN.md
 
-Progress: [########..] 80%
+Progress: [#########.] 90%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 2.8min
 - Total execution time: 0.4 hours
 
@@ -44,10 +44,11 @@ Progress: [########..] 80%
 | 02-grid-and-card-views | 2 | 4min | 2min |
 | 03-capture | 2 | 4min | 2min |
 | 04-ai-synthesis | 2 | 4min | 2min |
+| 05-onboarding-and-polish | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (2min), 03-02 (2min), 04-01 (2min), 04-02 (2min)
-- Trend: Consistent 2min/plan
+- Last 5 plans: 03-02 (2min), 04-01 (2min), 04-02 (2min), 05-01 (3min)
+- Trend: Consistent ~2-3min/plan
 
 *Updated after each plan completion*
 
@@ -86,6 +87,9 @@ Recent decisions affecting current work:
 - [04-02]: Default viewMode is 'captures' -- user explicitly toggles to synthesis view
 - [04-02]: Auto-switch to synthesis view after successful synthesis via onComplete callback
 - [04-02]: SynthesizeButton uses rounded-full pill shape to differentiate from tab toggles
+- [05-01]: Theme applied via dark class on documentElement, matching Tailwind v4 custom variant
+- [05-01]: System preference as default when no stored theme in Dexie
+- [05-01]: Export uses client-side Blob + programmatic anchor click for download
 
 ### Pending Todos
 
@@ -97,6 +101,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-05
-Stopped at: Completed 04-02-PLAN.md (Phase 04 complete)
-Resume file: .planning/phases/04-ai-synthesis/04-02-SUMMARY.md
+Last session: 2026-03-07
+Stopped at: Completed 05-01-PLAN.md
+Resume file: .planning/phases/05-onboarding-and-polish/05-01-SUMMARY.md

@@ -47,13 +47,13 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DATA-01**: All data stored locally in IndexedDB via Dexie.js (no account required)
 - [x] **DATA-02**: Data model uses UUIDs, timestamps, and deviceId (sync-ready for future)
 - [x] **DATA-03**: Safari IndexedDB eviction protection via navigator.storage.persist()
-- [ ] **DATA-04**: User can export all data as JSON for backup
+- [x] **DATA-04**: User can export all data as JSON for backup
 - [x] **DATA-05**: Entries and syntheses stored in separate IndexedDB stores
 
 ### Onboarding & Polish
 
 - [ ] **UX-01**: First-run asks for start date and reveals the life grid with emotional weight
-- [ ] **UX-02**: Dark and light mode support
+- [x] **UX-02**: Dark and light mode support
 - [x] **UX-03**: Week runs Sunday to Saturday
 - [x] **UX-04**: Founder's timeline starts at Week 943 (2025-07-20)
 
@@ -121,10 +121,10 @@ Deferred to future release. Tracked but not in current roadmap.
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 1 | Complete |
 | DATA-03 | Phase 1 | Complete |
-| DATA-04 | Phase 5 | Pending |
+| DATA-04 | Phase 5 | Complete |
 | DATA-05 | Phase 1 | Complete |
 | UX-01 | Phase 5 | Pending |
-| UX-02 | Phase 5 | Pending |
+| UX-02 | Phase 5 | Complete |
 | UX-03 | Phase 1 | Complete |
 | UX-04 | Phase 1 | Complete |
 
