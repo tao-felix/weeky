@@ -91,10 +91,11 @@ Plans:
   1. First-time user is asked for their birth date, sees the life grid revealed with emotional weight, and understands the 4000-week concept within 60 seconds
   2. User can export all their data as a JSON file for backup
   3. User can switch between dark and light mode, and the choice persists
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
+- [ ] 05-01-PLAN.md — Dark/light mode toggle with persistence + JSON data export for backup
+- [ ] 05-02-PLAN.md — First-run onboarding with birth date input, emotional 4000-week revelation, and grid reveal
 
 ## Progress
 
@@ -107,4 +108,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Grid and Card Views | 2/2 | Complete | 2026-03-03 |
 | 3. Capture | 2/2 | Complete | 2026-03-05 |
 | 4. AI Synthesis | 2/2 | Complete | 2026-03-05 |
-| 5. Onboarding and Polish | 0/? | Not started | - |
+| 5. Onboarding and Polish | 0/2 | In Progress | - |
