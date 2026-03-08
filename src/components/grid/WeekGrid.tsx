@@ -153,12 +153,10 @@ export function WeekGrid() {
           className="relative mx-auto"
           style={{
             height: `${rowVirtualizer.getTotalSize()}px`,
-            // year label width (40px) + 52 cells + gaps
             width: 'fit-content',
-            minWidth: '100%',
           }}
         >
-          <div className="sticky left-0" style={{ width: 'fit-content', margin: '0 auto' }}>
+          <div>
             {rowVirtualizer.getVirtualItems().map((virtualRow) => {
               const year = getYearForRow(virtualRow.index, WEEK1_YEAR);
               const isFirstRow = virtualRow.index === 0;
