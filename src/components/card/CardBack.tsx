@@ -13,12 +13,13 @@ import { SynthesisView } from './SynthesisView';
 
 interface CardBackProps {
   weekNumber: number;
+  onFlip?: () => void;
 }
 
 type CaptureMode = 'quick' | 'reflect';
 type BackViewMode = 'captures' | 'synthesis';
 
-export function CardBack({ weekNumber }: CardBackProps) {
+export function CardBack({ weekNumber, onFlip }: CardBackProps) {
   const isCurrentWeek = weekNumber === getCurrentWeek();
   const [captureMode, setCaptureMode] = useState<CaptureMode>('quick');
   const [viewMode, setViewMode] = useState<BackViewMode>('captures');
@@ -173,9 +174,13 @@ export function CardBack({ weekNumber }: CardBackProps) {
       )}
 
       {/* Flip hint */}
-      <p className="mt-4 text-xs text-stone-400 dark:text-stone-500 text-center">
+      <button
+        type="button"
+        onClick={onFlip}
+        className="mt-4 text-xs text-stone-400 dark:text-stone-500 text-center w-full hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
+      >
         Click to flip back
-      </p>
+      </button>
     </div>
   );
 }

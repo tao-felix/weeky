@@ -25,9 +25,10 @@ export function WeekCard({ weekNumber }: WeekCardProps) {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement).tagName;
       if (e.key === 'Escape') {
         handleClose();
-      } else if (e.key === ' ' || e.key === 'Enter') {
+      } else if ((e.key === ' ' || e.key === 'Enter') && tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'BUTTON') {
         e.preventDefault();
         handleFlip();
       }
@@ -85,12 +86,13 @@ export function WeekCard({ weekNumber }: WeekCardProps) {
             <CardFront weekNumber={weekNumber} />
           </div>
 
-          {/* Back face */}
+          {/* Back face — stop clicks from triggering flip */}
           <div
             style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
             className="absolute inset-0 bg-white dark:bg-stone-900 rounded-xl shadow-2xl border border-stone-200 dark:border-stone-700 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
           >
-            <CardBack weekNumber={weekNumber} />
+            <CardBack weekNumber={weekNumber} onFlip={handleFlip} />
           </div>
         </motion.div>
       </motion.div>
