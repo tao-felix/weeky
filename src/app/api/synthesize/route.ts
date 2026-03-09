@@ -19,11 +19,12 @@ export async function POST(req: Request) {
     )
     .join('\n');
 
-  const result = streamText({
-    model: anthropic('claude-haiku-4-5'),
-    maxOutputTokens: 500,
-    temperature: 0.7,
-    system: `You are a personal life archivist. Given a person's week captures, create a card for their life archive.
+  try {
+    const result = streamText({
+      model: anthropic('claude-haiku-4-5-20251001'),
+      maxOutputTokens: 500,
+      temperature: 0.7,
+      system: `You are a personal life archivist. Given a person's week captures, create a card for their life archive.
 
 Output a JSON object with exactly two fields:
 - "headline": A short, evocative title (2-5 words) capturing the week's essence. Think magazine headers. Do NOT include "Week N:" prefix.
@@ -34,11 +35,15 @@ Examples:
 {"headline": "The Facebook Path", "highlights": ["Explored Facebook's early growth playbook and network effects.", "Context engineering emerged as a key interest area.", "Wrestled with whether to build for distribution or depth."]}
 
 Output ONLY the JSON object, no markdown, no explanation.`,
-    prompt: `Week ${weekNumber} captures:\n\n${entriesText}`,
-    onError: ({ error }) => {
-      console.error('[synthesis] Stream error:', error);
-    },
-  });
+      prompt: `Week ${weekNumber} captures:\n\n${entriesText}`,
+    });
 
-  return result.toTextStreamResponse();
+    return result.toTextStreamResponse();
+  } catch (error) {
+    console.error('[synthesis] Error:', error);
+    return new Response(
+      JSON.stringify({ error: 'Synthesis failed', details: String(error) }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 }
