@@ -76,7 +76,7 @@ export function ReflectionEditor({ weekNumber }: ReflectionEditorProps) {
   const isEmpty = value.trim().length === 0;
 
   return (
-    <div className="rounded-lg border border-stone-200 bg-stone-50 p-3 dark:border-stone-700 dark:bg-stone-800/50">
+    <div className="rounded-lg border border-[#E8E5E0] bg-[#FAF8F5] p-3 dark:border-stone-700 dark:bg-stone-800/50">
       {/* Header */}
       <div className="mb-2 flex items-center gap-1.5">
         <PenLine className="h-3.5 w-3.5 text-stone-500 dark:text-stone-400" />
@@ -93,7 +93,7 @@ export function ReflectionEditor({ weekNumber }: ReflectionEditorProps) {
         placeholder="Reflect on your week..."
         disabled={isSubmitting}
         rows={4}
-        className="w-full resize-y rounded-md border border-stone-200 bg-white px-3 py-2 text-sm text-stone-700 placeholder:text-stone-400 outline-none focus:border-stone-400 dark:border-stone-600 dark:bg-stone-900 dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-500"
+        className="w-full resize-y rounded-md border border-[#E8E5E0] bg-white px-3 py-2 font-[family-name:var(--font-serif)] text-sm text-stone-700 placeholder:text-stone-400 outline-none focus:border-stone-400 dark:border-stone-600 dark:bg-[#242424] dark:text-stone-300 dark:placeholder:text-stone-500 dark:focus:border-stone-500"
       />
 
       {/* Save button */}

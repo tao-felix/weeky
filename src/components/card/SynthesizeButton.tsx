@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { Sparkles, Loader2 } from 'lucide-react';
-import { runSynthesis, saveSynthesis } from '@/lib/synthesis-utils';
-import type { Entry } from '@/lib/types';
+import type { EntryRow } from '@/lib/api';
+import { saveSynthesis } from '@/lib/api';
 
 interface SynthesizeButtonProps {
   weekNumber: number;
-  entries: Entry[];
+  entries: EntryRow[];
   hasSynthesis: boolean;
   onComplete?: () => void;
 }
@@ -21,10 +21,8 @@ export function SynthesizeButton({
   onComplete,
 }: SynthesizeButtonProps) {
   const [status, setStatus] = useState<SynthesizeStatus>('idle');
-  const [streamText, setStreamText] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  // Auto-clear error after 3 seconds
   useEffect(() => {
     if (status !== 'error') return;
     const timer = setTimeout(() => {
@@ -37,20 +35,48 @@ export function SynthesizeButton({
   async function handleSynthesize(e: React.MouseEvent) {
     e.stopPropagation();
     setStatus('streaming');
-    setStreamText('');
     setErrorMsg('');
 
     try {
-      const result = await runSynthesis({
-        weekNumber,
-        entries,
-        onProgress: (text) => setStreamText(text),
+      // Call the AI synthesize endpoint
+      const response = await fetch('/api/synthesize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          weekNumber,
+          entries: entries.map((e) => ({
+            type: e.type,
+            content: e.content,
+            createdAt: e.created_at,
+          })),
+        }),
       });
 
+      if (!response.ok) {
+        throw new Error(`Synthesis failed: ${response.status}`);
+      }
+
+      if (!response.body) {
+        throw new Error('No response stream');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let fullText = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        fullText += decoder.decode(value, { stream: true });
+      }
+
+      const parsed = JSON.parse(fullText);
+
+      // Save to database via API
       await saveSynthesis({
         weekNumber,
-        headline: result.headline,
-        highlights: result.highlights,
+        headline: parsed.headline,
+        highlights: parsed.highlights,
       });
 
       setStatus('idle');

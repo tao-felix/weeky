@@ -81,7 +81,7 @@ export function WeekCard({ weekNumber }: WeekCardProps) {
           {/* Front face */}
           <div
             style={{ backfaceVisibility: 'hidden' }}
-            className="absolute inset-0 bg-white dark:bg-stone-900 rounded-xl shadow-2xl border border-stone-200 dark:border-stone-700 overflow-hidden"
+            className="absolute inset-0 bg-[#FAF8F5] dark:bg-[#1A1A1A] rounded-xl shadow-2xl border border-[#E8E5E0] dark:border-stone-700 overflow-hidden"
           >
             <CardFront weekNumber={weekNumber} />
           </div>
@@ -89,7 +89,7 @@ export function WeekCard({ weekNumber }: WeekCardProps) {
           {/* Back face — stop clicks from triggering flip */}
           <div
             style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-            className="absolute inset-0 bg-white dark:bg-stone-900 rounded-xl shadow-2xl border border-stone-200 dark:border-stone-700 overflow-hidden"
+            className="absolute inset-0 bg-[#FAF8F5] dark:bg-[#1A1A1A] rounded-xl shadow-2xl border border-[#E8E5E0] dark:border-stone-700 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <CardBack weekNumber={weekNumber} onFlip={handleFlip} />

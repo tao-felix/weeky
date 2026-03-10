@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { WeekGrid } from '@/components/grid/WeekGrid';
 import { WeekCard } from '@/components/card/WeekCard';
 import { CurrentWeekPanel } from '@/components/panel/CurrentWeekPanel';
@@ -8,13 +8,13 @@ import { OnboardingModal } from '@/components/onboarding/OnboardingModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ExportButton } from '@/components/ExportButton';
 import { ImportDialog } from '@/components/import/ImportDialog';
+import { SearchModal } from '@/components/search/SearchModal';
 import { useUIStore } from '@/stores/ui-store';
-import { useLiveQuery } from 'dexie-react-hooks';
-import { db } from '@/lib/db';
+import { useSetting } from '@/hooks/use-api';
 import { getCurrentWeek, getWeekBoundaries } from '@/lib/week-utils';
 import { AnimatePresence } from 'motion/react';
 import { format } from 'date-fns';
-import { Upload } from 'lucide-react';
+import { Upload, Search } from 'lucide-react';
 
 function formatDateRange(start: string, end: string): string {
   const startDate = new Date(start + 'T00:00:00');
@@ -27,11 +27,10 @@ export default function Home() {
   const hoveredWeekNumber = useUIStore((state) => state.hoveredWeekNumber);
   const currentWeek = useMemo(() => getCurrentWeek(), []);
 
-  const birthDateSetting = useLiveQuery(
-    () => db.settings.get('birthDate').then((s) => s ?? null)
-  );
+  const { value: birthDateValue, loaded: birthDateLoaded } = useSetting('birthDate');
 
   const [importOpen, setImportOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const panelWeek = selectedWeekNumber ?? currentWeek;
   const displayWeek = hoveredWeekNumber ?? currentWeek;
   const displayBoundaries = useMemo(
@@ -40,11 +39,22 @@ export default function Home() {
   );
   const isHovering = hoveredWeekNumber !== null;
 
-  if (birthDateSetting === undefined) {
-    return <div className="h-screen bg-stone-50 dark:bg-stone-950" />;
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
+
+  if (!birthDateLoaded) {
+    return <div className="h-screen bg-[#FAF8F5] dark:bg-[#1A1A1A]" />;
   }
 
-  if (birthDateSetting === null) {
+  if (!birthDateValue) {
     return <OnboardingModal onComplete={() => {}} />;
   }
 
@@ -53,6 +63,14 @@ export default function Home() {
       {/* Shared header */}
       <div className="flex-none px-4 pt-8 pb-3 sm:px-6 text-center relative">
         <div className="absolute top-6 right-4 sm:right-6 flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="inline-flex items-center justify-center h-8 w-8 rounded-md text-[#6B6B6B] hover:text-[#1A1A1A] dark:text-stone-500 dark:hover:text-stone-300 hover:bg-[#F0EDE8] dark:hover:bg-stone-800 transition-colors"
+            title="Search (⌘K)"
+          >
+            <Search className="h-4 w-4" />
+          </button>
           <button
             type="button"
             onClick={() => setImportOpen(true)}
@@ -128,6 +146,7 @@ export default function Home() {
         </AnimatePresence>
       </div>
       <ImportDialog open={importOpen} onClose={() => setImportOpen(false)} />
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }

@@ -43,7 +43,7 @@ export function QuickCapture({ weekNumber }: QuickCaptureProps) {
   const isEmpty = value.trim().length === 0;
 
   return (
-    <div className="flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2 dark:border-stone-700 dark:bg-stone-900">
+    <div className="flex items-center gap-2 rounded-lg border border-[#E8E5E0] bg-white px-3 py-2 dark:border-stone-700 dark:bg-[#242424]">
       <input
         ref={inputRef}
         type="text"

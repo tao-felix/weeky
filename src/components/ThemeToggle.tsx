@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { db } from '@/lib/db';
+import { fetchSetting, saveSetting } from '@/lib/api';
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -11,7 +11,7 @@ export function ThemeToggle() {
   // Read initial theme on mount
   useEffect(() => {
     async function loadTheme() {
-      const stored = await db.settings.get('theme');
+      const stored = await fetchSetting('theme');
       let initial: 'light' | 'dark';
 
       if (stored && (stored.value === 'dark' || stored.value === 'light')) {
@@ -41,11 +41,7 @@ export function ThemeToggle() {
     const next = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
     applyTheme(next);
-    await db.settings.put({
-      key: 'theme',
-      value: next,
-      updatedAt: new Date().toISOString(),
-    });
+    await saveSetting('theme', next);
   }
 
   // Avoid hydration mismatch -- render nothing until mounted
@@ -54,7 +50,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="p-1.5 rounded-md text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300 transition-colors"
+      className="inline-flex items-center justify-center h-8 w-8 rounded-md text-[#6B6B6B] hover:text-[#1A1A1A] dark:text-stone-500 dark:hover:text-stone-300 hover:bg-[#F0EDE8] dark:hover:bg-stone-800 transition-colors"
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {theme === 'dark' ? (

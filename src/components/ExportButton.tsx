@@ -23,7 +23,7 @@ export function ExportButton() {
     <button
       onClick={handleExport}
       disabled={exporting}
-      className="p-1.5 rounded-md text-stone-400 hover:text-stone-600 dark:text-stone-500 dark:hover:text-stone-300 transition-colors disabled:opacity-50"
+      className="inline-flex items-center justify-center h-8 w-8 rounded-md text-[#6B6B6B] hover:text-[#1A1A1A] dark:text-stone-500 dark:hover:text-stone-300 hover:bg-[#F0EDE8] dark:hover:bg-stone-800 transition-colors disabled:opacity-50"
       aria-label="Export all data"
     >
       <Download className={`w-4 h-4 ${exporting ? 'animate-pulse' : ''}`} />
