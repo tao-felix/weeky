@@ -1,18 +1,20 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { WeekGrid } from '@/components/grid/WeekGrid';
 import { WeekCard } from '@/components/card/WeekCard';
 import { CurrentWeekPanel } from '@/components/panel/CurrentWeekPanel';
 import { OnboardingModal } from '@/components/onboarding/OnboardingModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { ExportButton } from '@/components/ExportButton';
+import { ImportDialog } from '@/components/import/ImportDialog';
 import { useUIStore } from '@/stores/ui-store';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '@/lib/db';
 import { getCurrentWeek, getWeekBoundaries } from '@/lib/week-utils';
 import { AnimatePresence } from 'motion/react';
 import { format } from 'date-fns';
+import { Upload } from 'lucide-react';
 
 function formatDateRange(start: string, end: string): string {
   const startDate = new Date(start + 'T00:00:00');
@@ -29,6 +31,7 @@ export default function Home() {
     () => db.settings.get('birthDate').then((s) => s ?? null)
   );
 
+  const [importOpen, setImportOpen] = useState(false);
   const panelWeek = selectedWeekNumber ?? currentWeek;
   const displayWeek = hoveredWeekNumber ?? currentWeek;
   const displayBoundaries = useMemo(
@@ -46,17 +49,25 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-stone-50 dark:bg-stone-950">
+    <div className="flex flex-col h-screen bg-[#FAF8F5] dark:bg-[#1A1A1A]">
       {/* Shared header */}
-      <div className="flex-none px-4 pt-6 pb-2 sm:px-6 text-center relative">
-        <div className="absolute top-4 right-4 sm:right-6 flex items-center gap-1">
+      <div className="flex-none px-4 pt-8 pb-3 sm:px-6 text-center relative">
+        <div className="absolute top-6 right-4 sm:right-6 flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => setImportOpen(true)}
+            className="inline-flex items-center justify-center h-8 w-8 rounded-md text-[#6B6B6B] hover:text-[#1A1A1A] dark:text-stone-500 dark:hover:text-stone-300 hover:bg-[#F0EDE8] dark:hover:bg-stone-800 transition-colors"
+            title="Import from Obsidian"
+          >
+            <Upload className="h-4 w-4" />
+          </button>
           <ExportButton />
           <ThemeToggle />
         </div>
-        <h1 className="text-2xl sm:text-3xl font-light tracking-tight text-stone-700 dark:text-stone-300">
+        <h1 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl italic text-[#1A1A1A] dark:text-[#E8E6E3]">
           Your 4000 Weeks
         </h1>
-        <p className="mt-1 text-xs sm:text-sm text-stone-400 dark:text-stone-500 font-mono">
+        <p className="mt-1.5 text-xs sm:text-sm text-[#6B6B6B] dark:text-stone-500 tracking-wide">
           {isHovering ? (
             <>
               Week {displayWeek} &middot;{' '}
@@ -72,30 +83,30 @@ export default function Home() {
       </div>
 
       {/* Legend */}
-      <div className="flex-none flex justify-center gap-3 sm:gap-4 px-4 py-2 text-[10px] sm:text-xs text-stone-400 dark:text-stone-500">
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-[1px] bg-stone-300 dark:bg-stone-700" />
-          Empty
+      <div className="flex-none flex justify-center gap-4 sm:gap-5 px-4 py-2 text-[10px] sm:text-xs text-[#6B6B6B] dark:text-stone-500 tracking-wide uppercase">
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#DCD0C0] dark:bg-stone-700" />
+          Lived
         </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-[1px] bg-amber-400 dark:bg-amber-600" />
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#C08283] dark:bg-[#C08283]" />
           Captured
         </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-[1px] bg-emerald-500 dark:bg-emerald-600" />
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#8BBFBC] dark:bg-[#8BBFBC]" />
           Synthesized
         </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-[1px] bg-orange-500" />
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#FEC66E] dark:bg-[#FEC66E]" />
           Current
         </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-[1px] bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800" />
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-sm bg-[#F0EDE8] dark:bg-[#242424] border border-[#E8E5E0] dark:border-stone-700" />
           Future
         </span>
       </div>
 
-      {/* Main content: left panel + right grid (equal width) */}
+      {/* Main content: left panel + right grid (50/50) */}
       <div className="flex-1 flex min-h-0">
         {/* Left: Week detail panel (desktop only) */}
         <div className="hidden md:flex flex-1 min-w-0">
@@ -116,6 +127,7 @@ export default function Home() {
           )}
         </AnimatePresence>
       </div>
+      <ImportDialog open={importOpen} onClose={() => setImportOpen(false)} />
     </div>
   );
 }

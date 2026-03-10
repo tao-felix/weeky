@@ -5,7 +5,8 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '@/lib/db';
 import { getCurrentWeek, getWeekBoundaries } from '@/lib/week-utils';
 import { format } from 'date-fns';
-import { MessageCircle, PenLine, Sparkles } from 'lucide-react';
+import { MessageCircle, PenLine, Sparkles, BookOpen, CheckSquare, MapPin } from 'lucide-react';
+import type { Entry, EntryType } from '@/lib/types';
 import { QuickCapture } from '@/components/capture/QuickCapture';
 import { ReflectionEditor } from '@/components/capture/ReflectionEditor';
 import { SynthesizeButton } from '@/components/card/SynthesizeButton';
@@ -35,25 +36,43 @@ export function CurrentWeekPanel({ weekNumber }: CurrentWeekPanelProps) {
     [weekNumber]
   );
 
+  // Separate diary entries from regular captures
+  const diaryEntries = entries?.filter(e => e.type === 'diary') ?? [];
+  const captureEntries = entries?.filter(e => e.type !== 'diary') ?? [];
   const hasEntries = entries !== undefined && entries.length > 0;
   const hasSynthesis = !!synthesis;
+
+  // Get week metadata for location/theme display
+  const week = useLiveQuery(
+    () => db.weeks.where('weekNumber').equals(weekNumber).first(),
+    [weekNumber]
+  );
 
   const startDate = new Date(start + 'T00:00:00');
   const endDate = new Date(end + 'T00:00:00');
 
   return (
-    <div className="flex flex-col h-full w-full bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800">
+    <div className="flex flex-col h-full w-full bg-white dark:bg-[#1A1A1A] border-r border-[#E8E5E0] dark:border-stone-800">
       {/* Week header */}
       <div className="flex-none px-5 pt-6 pb-4 border-b border-stone-100 dark:border-stone-800">
         <p className="text-xs font-medium uppercase tracking-widest text-stone-400 dark:text-stone-500">
           {isCurrentWeek ? 'This Week' : isFutureWeek ? 'Future Week' : 'Past Week'}
         </p>
-        <h2 className="mt-1 text-2xl font-bold tracking-tight text-stone-800 dark:text-stone-100">
+        <h2 className="mt-1 font-[family-name:var(--font-display)] text-3xl italic text-[#1A1A1A] dark:text-[#E8E6E3]">
           Week {weekNumber}
         </h2>
         <p className="mt-0.5 text-xs text-stone-400 dark:text-stone-500 font-mono">
           {format(startDate, 'MMM d')} – {format(endDate, 'MMM d, yyyy')}
         </p>
+
+        {/* Location & theme from week metadata */}
+        {week?.location && (
+          <div className="mt-2 flex items-center gap-1 text-xs text-stone-400 dark:text-stone-500">
+            <MapPin className="w-3 h-3" />
+            <span>{week.location}</span>
+            {week.theme && <span className="ml-1">· {week.theme}</span>}
+          </div>
+        )}
 
         {/* AI headline */}
         {synthesis?.headline && (
@@ -152,28 +171,60 @@ export function CurrentWeekPanel({ weekNumber }: CurrentWeekPanelProps) {
             </p>
           </div>
         ) : (
-          entries.map((entry) => (
-            <div
-              key={entry.id}
-              className="pb-3 border-b border-stone-100 dark:border-stone-800 last:border-b-0"
-            >
-              <div className="flex items-center gap-1.5 mb-1">
-                {entry.type === 'reflection' ? (
-                  <PenLine className="w-3 h-3 text-stone-400 dark:text-stone-500" />
-                ) : (
-                  <MessageCircle className="w-3 h-3 text-stone-400 dark:text-stone-500" />
-                )}
-                <time className="text-xs text-stone-400 dark:text-stone-500">
-                  {format(new Date(entry.createdAt), 'EEE, MMM d \u00b7 h:mm a')}
-                </time>
+          <>
+            {/* Diary entries (imported from Obsidian) */}
+            {diaryEntries.map((entry) => (
+              <div
+                key={entry.id}
+                className="pb-4 border-b border-stone-200 dark:border-stone-700 last:border-b-0"
+              >
+                <div className="flex items-center gap-1.5 mb-2">
+                  <BookOpen className="w-3 h-3 text-amber-500 dark:text-amber-400" />
+                  <span className="text-xs font-medium text-amber-600 dark:text-amber-400">
+                    Diary
+                  </span>
+                  {entry.metadata?.location && (
+                    <span className="text-xs text-stone-400 dark:text-stone-500">
+                      · {entry.metadata.location}
+                    </span>
+                  )}
+                </div>
+                <div className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed whitespace-pre-wrap max-h-96 overflow-y-auto prose prose-sm dark:prose-invert prose-stone">
+                  {entry.content}
+                </div>
               </div>
-              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed whitespace-pre-wrap">
-                {entry.content}
-              </p>
-            </div>
-          ))
+            ))}
+
+            {/* Regular captures */}
+            {captureEntries.map((entry) => (
+              <div
+                key={entry.id}
+                className="pb-3 border-b border-stone-100 dark:border-stone-800 last:border-b-0"
+              >
+                <div className="flex items-center gap-1.5 mb-1">
+                  <EntryIcon type={entry.type} />
+                  <time className="text-xs text-stone-400 dark:text-stone-500">
+                    {format(new Date(entry.createdAt), 'EEE, MMM d · h:mm a')}
+                  </time>
+                </div>
+                <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed whitespace-pre-wrap">
+                  {entry.content}
+                </p>
+              </div>
+            ))}
+          </>
         )}
       </div>
     </div>
   );
+}
+
+function EntryIcon({ type }: { type: EntryType }) {
+  const cls = "w-3 h-3 text-stone-400 dark:text-stone-500";
+  switch (type) {
+    case 'reflection': return <PenLine className={cls} />;
+    case 'task': return <CheckSquare className={cls} />;
+    case 'diary': return <BookOpen className={cls} />;
+    default: return <MessageCircle className={cls} />;
+  }
 }
